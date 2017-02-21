@@ -1,0 +1,11 @@
+
+*.class
+spark/spark-in-practice-scala/project/target
+spark/spark-in-practice-scala/target
+spark/spark-in-practice-scala/project/target/
+
+
+
+*.class
+
+*.class

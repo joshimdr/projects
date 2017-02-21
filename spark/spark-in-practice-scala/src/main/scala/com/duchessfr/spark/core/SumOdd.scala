@@ -18,8 +18,9 @@ import org.apache.spark.{SparkConf, SparkContext}
       val sconf = new SparkConf().setAppName("MunishSum").setMaster("local[*]")
       val scontext = new SparkContext(sconf)
 
-      val numbers = scontext.textFile(pathToFile).flatMap(_.split(",").filter(isOdd(_)))
+     // val numbers = // scontext.textFile(pathToFile).flatMap(_.split(",").filter(isOdd(_)))
 
+      val numbers = scontext.textFile(pathToFile).flatMap(_.split(","))
       println("******************")
       print(numbers)
 
