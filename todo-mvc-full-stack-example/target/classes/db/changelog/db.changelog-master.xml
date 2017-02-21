@@ -1,0 +1,33 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="
+                      http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd
+                      http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+  <changeSet id="create-schema" author="irt">
+    <createTable tableName="TODO_ITEMS">
+      <column name="ID"   type="BIGINT" autoIncrement="true">
+        <constraints primaryKey="true" primaryKeyName="PK_ID" nullable="false" />
+      </column>
+      <column name="DESCRIPTION" type="VARCHAR(140)">
+        <constraints nullable="false" />
+      </column>
+       <column name="COMPLETED" type="BOOLEAN">
+        <constraints nullable="false" />
+      </column>
+      <column name="CREATED" type="DATETIME">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet id="seed-data" author="irt">
+    <sql>
+      INSERT INTO TODO_ITEMS(DESCRIPTION, COMPLETED, CREATED) VALUES ('Write some code', FALSE ,CURRENT_TIMESTAMP());
+      INSERT INTO TODO_ITEMS(DESCRIPTION, COMPLETED,CREATED) VALUES ('Pick up groceries',FALSE, CURRENT_TIMESTAMP());
+      INSERT INTO TODO_ITEMS(DESCRIPTION, COMPLETED,CREATED) VALUES ('Practice guitar', FALSE, CURRENT_TIMESTAMP());
+      INSERT INTO TODO_ITEMS(DESCRIPTION, COMPLETED,CREATED) VALUES ('Go to post office', FALSE, CURRENT_TIMESTAMP());
+    </sql>
+  </changeSet>
+  <!--  To learn how to add a new column take a look at http://www.liquibase.org/documentation/changes/add_column.html -->
+</databaseChangeLog>

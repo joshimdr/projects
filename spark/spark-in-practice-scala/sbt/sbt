@@ -1,0 +1,12 @@
+#!/bin/bash
+#export MESOS_NATIVE_LIBRARY=/usr/local/lib/libmesos.so
+export SPARK_JAVA_OPTS="-XX:+UseConcMarkSweepGC"
+java -Xmx1024m -jar $(dirname $0)/sbt-launch.jar "$@"
+
+
+scalaVersion := "2.11.8"
+
+resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
+
+libraryDependencies +=
+  "com.typesafe.akka" % "akka-actor_2.11" % "2.4.6"

@@ -1,0 +1,224 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.srccodes.spring</groupId>
+	<artifactId>SpringMVCHelloWorld</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>SpringMVCHelloWorld Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<junit.version>4.11</junit.version>
+		<jdk.version>1.6</jdk.version>
+		<org.springframework.version>3.2.4.RELEASE</org.springframework.version>
+		<aspectj.version>1.7.3</aspectj.version>
+	</properties>
+
+	<dependencies>
+
+		<!-- Spring MVC depends on spring-core, spring-beans, spring-context, spring-web -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.compendium</artifactId>
+			<version>4.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>4.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+
+	</dependencies>
+
+
+
+	<build>
+		<finalName>${project.artifactId}-${project.version}</finalName>
+
+
+
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>build-helper-maven-plugin</artifactId>
+										<versionRange>[1.5,)</versionRange>
+										<goals>
+											<goal>parse-version</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.felix</groupId>
+										<artifactId>maven-bundle-plugin</artifactId>
+										<versionRange>[2.3.4,)</versionRange>
+										<goals>
+											<goal>manifest</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-pmd-plugin</artifactId>
+										<versionRange>[2.5,)</versionRange>
+										<goals>
+											<goal>check</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<!-- Maven compiler plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+			<!-- to generate the MANIFEST-FILE required by the bundle -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<version>2.3.4</version>
+				<executions>
+					<execution>
+						<id>bundle-manifest</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>manifest</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<manifestLocation>${project.build.outputDirectory}/META-INF</manifestLocation>
+					<supportedProjectTypes>
+						<supportedProjectType>bundle</supportedProjectType>
+						<supportedProjectType>war</supportedProjectType>
+					</supportedProjectTypes>
+					<instructions>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-ClassPath>WEB-INF/classes,.</Bundle-ClassPath>
+
+						<Import-Package>
+							javax.servlet;
+							javax.servlet.http;
+							javax.servlet.jsp.jstl.core,
+							javax.servlet.resources;
+							org.apache.taglibs.standard,
+							org.apache.taglibs.standard.extra.spath,
+							org.apache.taglibs.standard.functions,
+							org.apache.taglibs.standard.lang.jstl,
+							org.apache.taglibs.standard.lang.jstl.parser,
+							org.apache.taglibs.standard.lang.jstl.test,
+							org.apache.taglibs.standard.lang.jstl.test.beans,
+							org.apache.taglibs.standard.lang.support,
+							org.apache.taglibs.standard.resources,
+							org.apache.taglibs.standard.tag.common.core,
+							org.apache.taglibs.standard.tag.common.fmt,
+							org.apache.taglibs.standard.tag.common.sql,
+							org.apache.taglibs.standard.tag.common.xml,
+							org.apache.taglibs.standard.tag.el.core,
+							org.apache.taglibs.standard.tag.el.fmt,
+							org.apache.taglibs.standard.tag.el.sql,
+							org.apache.taglibs.standard.tag.el.xml,
+							org.apache.taglibs.standard.tag.rt.core,
+							org.apache.taglibs.standard.tag.rt.fmt,
+							org.apache.taglibs.standard.tag.rt.sql,
+							org.apache.taglibs.standard.tag.rt.xml,
+							org.apache.taglibs.standard.tei,
+							org.apache.taglibs.standard.tlv,
+							org.springframework.beans.factory.config,
+							org.springframework.osgi.web.context.support,
+							org.springframework.stereotype,
+							org.springframework.web.bind.annotation,
+							org.springframework.web.servlet,
+							org.springframework.web.servlet.view,
+							*;resolution:=optional
+
+						</Import-Package>
+						<Embed-Directory>WEB-INF/lib</Embed-Directory>
+						<Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
+						<Embed-Transitive>true</Embed-Transitive>
+						<Webapp-Context>${project.artifactId}</Webapp-Context>
+						<Web-ContextPath>${project.artifactId}</Web-ContextPath>
+						<_wab>src/main/webapp</_wab>
+					</instructions>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<!-- <attachClasses>true</attachClasses> -->
+					<archive>
+						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+					</archive>
+					<failOnMissingWebXml>true</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+
+</project>

@@ -1,0 +1,5 @@
+edu/stanford/irt/Application.class
+edu/stanford/irt/web/TodoItemController.class
+edu/stanford/irt/service/TodoItemService.class
+edu/stanford/irt/service/TodoItemRepository.class
+edu/stanford/irt/domain/TodoItem.class

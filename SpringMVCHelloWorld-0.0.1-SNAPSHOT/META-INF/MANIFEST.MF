@@ -1,0 +1,40 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven Bundle Plugin
+Built-By: munish
+Build-Jdk: 1.7.0_76
+Webapp-Context: SpringMVCHelloWorld
+Export-Package: com.srccodes.spring.controller;uses:="org.springframew
+ ork.ui,org.springframework.web.bind.annotation,org.springframework.st
+ ereotype"
+Embed-Directory: WEB-INF/lib
+Bundle-ClassPath: WEB-INF/classes,WEB-INF/classes,.
+Tool: Bnd-1.15.0
+Bundle-Name: SpringMVCHelloWorld Maven Webapp
+Web-ContextPath: SpringMVCHelloWorld
+Bundle-Version: 0.0.1.SNAPSHOT
+Bnd-LastModified: 1427305874174
+Embed-Transitive: true
+Bundle-ManifestVersion: 2
+Embed-Dependency: *;scope=compile|runtime
+Import-Package: javax.servlet,javax.servlet.http,javax.servlet.jsp.jst
+ l.core,javax.servlet.resources,org.apache.taglibs.standard,org.apache
+ .taglibs.standard.extra.spath,org.apache.taglibs.standard.functions,o
+ rg.apache.taglibs.standard.lang.jstl,org.apache.taglibs.standard.lang
+ .jstl.parser,org.apache.taglibs.standard.lang.jstl.test,org.apache.ta
+ glibs.standard.lang.jstl.test.beans,org.apache.taglibs.standard.lang.
+ support,org.apache.taglibs.standard.resources,org.apache.taglibs.stan
+ dard.tag.common.core,org.apache.taglibs.standard.tag.common.fmt,org.a
+ pache.taglibs.standard.tag.common.sql,org.apache.taglibs.standard.tag
+ .common.xml,org.apache.taglibs.standard.tag.el.core,org.apache.taglib
+ s.standard.tag.el.fmt,org.apache.taglibs.standard.tag.el.sql,org.apac
+ he.taglibs.standard.tag.el.xml,org.apache.taglibs.standard.tag.rt.cor
+ e,org.apache.taglibs.standard.tag.rt.fmt,org.apache.taglibs.standard.
+ tag.rt.sql,org.apache.taglibs.standard.tag.rt.xml,org.apache.taglibs.
+ standard.tei,org.apache.taglibs.standard.tlv,org.springframework.bean
+ s.factory.config,org.springframework.osgi.web.context.support,org.spr
+ ingframework.stereotype,org.springframework.ui;resolution:=optional,o
+ rg.springframework.web.bind.annotation,org.springframework.web.servle
+ t,org.springframework.web.servlet.view
+Bundle-SymbolicName: SpringMVCHelloWorld
+
